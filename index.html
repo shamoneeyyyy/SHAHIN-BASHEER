@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahin Basheer - Premium Civil Contractor & Structural Planner</title>
+    <!-- Google Fonts: Outfit (For Headlines) & Inter (For Clean Reading) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .brand-name, .btn-header, .btn-primary, .section-tag, .projects-toggle-btn {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        :root {
+            --bg-dark: #070d17;
+            --card-bg: rgba(18, 28, 45, 0.65);
+            --border-blueprint: rgba(255, 255, 255, 0.12);
+            --border-accent: rgba(119, 171, 183, 0.3);
+            --accent-gold: #e5a93c;
+            --accent-cyan: #4cc9f0;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        /* PREMIUM MULTI-LAYER GRADIENT BACKGROUND */
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(30, 58, 138, 0.35) 0%, transparent 45%),
+                radial-gradient(circle at 85% 60%, rgba(14, 116, 144, 0.25) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(229, 169, 60, 0.12) 0%, transparent 40%),
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 45px 45px, 45px 45px;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(7, 13, 23, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-blueprint);
+            z-index: 1000;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-toggle-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-accent);
+            color: var(--text-light);
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle-btn:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(76, 201, 240, 0.15);
+            box-shadow: 0 0 15px rgba(76, 201, 240, 0.3);
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            color: var(--text-light);
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover { color: #ffffff; }
+
+        .btn-header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+            color: #ffffff;
+            border: 1px solid var(--border-accent);
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-header:hover {
+            background: #ffffff;
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* DRAWER STYLING */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            left: -50%;
+            width: 50%;
+            height: 100%;
+            background: rgba(11, 20, 35, 0.92);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--border-accent);
+            z-index: 2001;
+            padding: 35px 30px;
+            overflow-y: auto;
+            transition: left 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+            box-shadow: 15px 0 40px rgba(0,0,0,0.7);
+        }
+
+        .drawer-overlay.active .side-drawer {
+            left: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-blueprint);
+            padding-bottom: 18px;
+            margin-bottom: 25px;
+        }
+
+        .drawer-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #ffffff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .close-drawer-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 22px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-drawer-btn:hover {
+            color: #ffffff;
+        }
+
+        .drawer-projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .drawer-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-blueprint);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drawer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-cyan);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-card:hover {
+            transform: translateX(6px);
+            border-color: var(--border-accent);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .drawer-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 6% 70px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-size: 13px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+
+        .hero-title strong {
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 540px;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .profile-container {
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 210px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--border-accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        .profile-caption {
+            margin-top: 14px;
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            color: var(--bg-dark);
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255,255,255,0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(255,255,255,0.25);
+        }
+
+        .statement-section {
+            border: 1px solid var(--border-blueprint);
+            padding: 60px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .statement-text {
+            font-size: 26px;
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--text-light);
+        }
+
+        .statement-text strong {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .offerings {
+            padding: 90px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .offerings-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .offerings-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border-blueprint);
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-blueprint);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            padding-left: 12px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .service-number {
+            font-size: 15px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-light);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .service-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .plans-section {
+            padding: 70px 6%;
+            background: transparent;
+            border-top: 1px solid var(--border-blueprint);
+            border-bottom: 1px solid var(--border-blueprint);
+        }
+
+        .plans-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .projects-toggle-btn {
+            background: var(--card-bg) !important;
+            border: 1px solid var(--border-accent);
+            color: var(--text-light);
+            padding: 18px 32px;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+            max-width: 540px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .projects-toggle-btn:hover {
+            border-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .projects-toggle-btn i {
+            transition: transform 0.4s ease;
+            color: var(--accent-cyan);
+        }
+
+        .projects-toggle-btn.active i {
+            transform: rotate(180deg);
+        }
+
+        .plans-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            text-align: left;
+        }
+
+        .plans-wrapper.open {
+            max-height: 2000px;
+            transition: max-height 0.8s ease-in-out;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-blueprint);
+            border-radius: 14px;
+            padding: 14px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-accent);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .plan-drawing-box {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-blueprint);
+            background-color: #0b1422;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .plan-drawing-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .plan-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .plan-meta {
+            font-size: 12px;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .plan-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            border-top: 1px solid var(--border-blueprint);
+            padding-top: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .contact-section {
+            padding: 90px 6% 60px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+        }
+
+        .contact-details { margin-top: 30px; }
+
+        .contact-item { margin-bottom: 20px; }
+
+        .contact-item span {
+            display: block;
+            font-size: 11px;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .contact-item a, .contact-item p {
+            font-size: 16px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social-contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 22px;
+            border-radius: 10px;
+            border: 1px solid var(--border-blueprint);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .contact-btn-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-btn i { font-size: 20px; }
+
+        .contact-btn.whatsapp:hover {
+            border-color: #25D366;
+            background: rgba(37, 211, 102, 0.12);
+            color: #25D366;
+        }
+
+        .contact-btn.email:hover {
+            border-color: #ea4335;
+            background: rgba(234, 67, 53, 0.12);
+            color: #ea4335;
+        }
+
+        .contact-btn.instagram:hover {
+            border-color: #E1306C;
+            background: rgba(225, 48, 108, 0.12);
+            color: #E1306C;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--border-blueprint);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid var(--border-blueprint);
+            background: transparent;
+            font-size: 14px;
+            color: var(--text-light);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus { border-color: var(--accent-cyan); }
+
+        footer {
+            padding: 35px 6%;
+            border-top: 1px solid var(--border-blueprint);
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+
+        .whatsapp-btn:hover { transform: scale(1.1); }
+
+        /* Responsive Styles */
+        @media (max-width: 900px) {
+            .side-drawer {
+                width: 80%;
+                left: -80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            .hero-layout, .offerings-header, .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+            
+            .plans-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 12px;
+            }
+            .plan-card { padding: 10px; }
+            .plan-title { font-size: 13px; }
+            .plan-meta { font-size: 10px; margin-bottom: 6px; }
+            .plan-details { font-size: 9px; padding-top: 6px; flex-direction: column; gap: 2px; }
+
+            .hero { padding: 120px 5% 40px 5%; }
+            .hero-title { font-size: 34px; }
+            .profile-img { width: 180px; height: 220px; }
+            .statement-text { font-size: 20px; }
+            .service-item { grid-template-columns: 40px 1fr; gap: 10px; }
+            .service-desc { grid-column: span 2; margin-top: 3px; }
+            footer { flex-direction: column; gap: 12px; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .side-drawer {
+                width: 88%;
+                left: -88%;
+            }
+            .plans-grid { gap: 10px; }
+            .plans-section { padding: 50px 4%; }
+            .projects-toggle-btn { font-size: 13px; padding: 14px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="header-brand-container">
+            <button class="menu-toggle-btn" id="openDrawerBtn" title="View Portfolio Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="#" class="brand-name">Shahin Basheer</a>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#plans">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn-header">Consult Now</a>
+    </header>
+
+    <!-- SIDE DRAWER FOR FEATURED WORKS -->
+    <div class="drawer-overlay" id="drawerOverlay">
+        <div class="side-drawer" id="sideDrawer">
+            <div class="drawer-header">
+                <h3>Featured Projects</h3>
+                <button class="close-drawer-btn" id="closeDrawerBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="drawer-projects-grid">
+                <a href="project1.html" class="drawer-card">
+                    <h3 class="plan-title">4 BHK Luxury Residence</h3>
+                    <p class="plan-meta">View Architectural Specifications</p>
+                    <div class="plan-details">
+                        <span>Built-Up Area: 1450 sq.ft</span>
+                        <span>Plot Area: 3.5 Cents</span>
+                    </div>
+                </a>
+
+                <a href="project 2.html" class="drawer-card">
+                    <h3 class="plan-title">3 BHK Contemporary Villa</h3>
+                    <p class="plan-meta">View Architectural Specifications</p>
+                    <div class="plan-details">
+                        <span>Built-Up Area: 1350 sq.ft</span>
+                        <span>Plot Area: 3.5 Cents</span>
+                    </div>
+                </a>
+
+                <a href="Renovation1.html" class="drawer-card">
+                    <h3 class="plan-title">Residential Renovation & Expansion</h3>
+                    <p class="plan-meta">View Structural Details</p>
+                    <div class="plan-details">
+                        <span>Custom Layout</span>
+                        <span>Full Restoration</span>
+                    </div>
+                </a>
+
+                <a href="Loading.html" class="drawer-card">
+                    <h3 class="plan-title">Modern Minimalist 3 BHK Layout</h3>
+                    <p class="plan-meta">View Floor Plan Concept</p>
+                    <div class="plan-details">
+                        <span>Custom Plan</span>
+                        <span>Turnkey Ready</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-layout">
+            <div>
+                <span class="section-tag">Civil Contractor & Architectural Planner</span>
+                <h1 class="hero-title">Crafting Structural Excellence through <strong>Precision & Integrity</strong></h1>
+                <p class="hero-description">
+                    Delivering high-end residential and commercial construction across Kerala. Specializing in sustainable architectural engineering, refined space planning, and premium quality execution.
+                </p>
+                <div class="cta-group">
+                    <a href="#contact" class="btn-primary">
+                        Schedule Consultation <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="profile-container">
+                <img src="SHAHIN BASHEER.jpg" alt="Shahin Basheer - Lead Contractor" class="profile-img">
+                <p class="profile-caption">Shahin Basheer — Principal Civil Contractor</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statement Banner -->
+    <section class="statement-section">
+        <p class="statement-text">
+            Committed to <strong>uncompromising structural integrity, optimized spatial design, and refined aesthetics.</strong> Every project represents a benchmark in modern engineering and long-term durability.
+        </p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="offerings" id="services">
+        <div class="offerings-header">
+            <div>
+                <span class="section-tag">[03] EXPERTISE & CAPABILITIES</span>
+                <h2>Comprehensive Construction & Structural Services</h2>
+            </div>
+            <div>
+                <p style="color: var(--text-muted); font-weight: 300;">
+                    From blueprint conception to final turnkey handover, delivering seamless engineering solutions tailored to distinct architectural demands.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-list">
+            <div class="service-item">
+                <span class="service-number">(01)</span>
+                <span class="service-title">Turnkey Civil Construction</span>
+                <span class="service-desc">End-to-end structural construction, site supervision, and execution.</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">(02)</span>
+                <span class="service-title">Architectural Floor Planning</span>
+                <span class="service-desc">Custom spatial engineering, structural optimization, and layout design.</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">(03)</span>
+                <span class="service-title">3D Elevation & Renderings</span>
+                <span class="service-desc">Photorealistic exterior design and material visualization.</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">(04)</span>
+                <span class="service-title">Structural Renovation & Upgrades</span>
+                <span class="service-desc">Modifying, retrofitting, and modernizing existing built environments.</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">(05)</span>
+                <span class="service-title">Interior Execution & Fit-Outs</span>
+                <span class="service-desc">Bespoke interior finishing, architectural joinery, and premium flooring.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architectural Plans Section -->
+    <section class="plans-section" id="plans">
+        <div class="plans-container">
+            <!-- Projects Toggle Button -->
+            <button class="projects-toggle-btn" id="projectsToggle">
+                <span>EXPLORE FEATURED ARCHITECTURAL PROJECTS</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <!-- Expandable Projects Wrapper -->
+            <div class="plans-wrapper" id="plansWrapper">
+                <div class="plans-grid">
+                    <!-- Project 1 -->
+                    <a href="project1.html" class="plan-card">
+                        <div class="plan-drawing-box">
+                            <img src="project-1.jpg" alt="4 BHK Luxury Villa Floor Plan">
+                        </div>
+                        <h3 class="plan-title">4 BHK Luxury Residence</h3>
+                        <p class="plan-meta">View Full Layout Specifications</p>
+                        <div class="plan-details">
+                            <span>Built-Up: 1450 sq.ft</span>
+                            <span>Plot: 3.5 Cents</span>
+                        </div>
+                    </a>
+
+                    <!-- Project 2 -->
+                    <a href="project 2.html" class="plan-card">
+                        <div class="plan-drawing-box">
+                            <img src="project-2.jpg" alt="3 BHK Luxury Villa Floor Plan">
+                        </div>
+                        <h3 class="plan-title">3 BHK Modern Residence</h3>
+                        <p class="plan-meta">View Full Layout Specifications</p>
+                        <div class="plan-details">
+                            <span>Built-Up: 1350 sq.ft</span>
+                            <span>Plot: 3.5 Cents</span>
+                        </div>
+                    </a>
+
+                    <!-- Project 3 -->
+                    <a href="Renovation1.html" class="plan-card">
+                        <div class="plan-drawing-box">
+                            <img src="Renovation1.png" alt="Renovation Plan">
+                        </div>
+                        <h3 class="plan-title">Residential Expansion & Remodel</h3>
+                        <p class="plan-meta">View Before & After Plan</p>
+                        <div class="plan-details">
+                            <span>Custom Area</span>
+                            <span>Structural Upgrade</span>
+                        </div>
+                    </a>
+
+                    <!-- Project 4 -->
+                    <a href="Loading.html" class="plan-card">
+                        <div class="plan-drawing-box">
+                            <img src="Loading.png" alt="Loading Plan">
+                        </div>
+                        <h3 class="plan-title">Contemporary 3 BHK Concept</h3>
+                        <p class="plan-meta">View Floor Plan Specifications</p>
+                        <div class="plan-details">
+                            <span>Custom Area</span>
+                            <span>Turnkey Plan</span>
+                        </div>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <span class="section-tag">GET IN TOUCH</span>
+                <h2>Initiate Your Construction Project.</h2>
+                <p style="color: var(--text-muted); font-weight: 300;">Contact us to discuss structural timelines, detailed cost estimates, or customized architectural planning.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span>Registered Office Location</span>
+                        <p>Thittayil House, Panayikulam, Nalamayil, Kerala</p>
+                    </div>
+                </div>
+
+                <div class="social-contact-buttons">
+                    <a href="https://wa.me/919037737731" target="_blank" class="contact-btn whatsapp">
+                        <div class="contact-btn-left">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Direct WhatsApp Consultation</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                    </a>
+
+                    <a href="mailto:shamoneeyyyy@gmail.com" class="contact-btn email">
+                        <div class="contact-btn-left">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span>Send Formal Inquiry</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                    </a>
+
+                    <a href="https://instagram.com" target="_blank" class="contact-btn instagram">
+                        <div class="contact-btn-left">
+                            <i class="fa-brands fa-instagram"></i>
+                            <span>Follow Work Portfolio</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <form action="#" method="POST">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="tel" placeholder="Phone Number / WhatsApp" required>
+                    <input type="text" placeholder="Project Location & Plot Extent">
+                    <textarea rows="4" placeholder="Briefly describe your project scope & requirements..." required></textarea>
+                    <button type="submit" class="btn-primary" style="margin-top: 10px; cursor: pointer; border: none;">
+                        Submit Inquiry <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/919037737731" class="whatsapp-btn" target="_blank" title="Contact via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Shahin Basheer Civil Contracting. All Rights Reserved.</p>
+        <p>Architectural Precision & Design</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const projectsToggle = document.getElementById('projectsToggle');
+        const plansWrapper = document.getElementById('plansWrapper');
+
+        projectsToggle.addEventListener('click', () => {
+            projectsToggle.classList.toggle('active');
+            plansWrapper.classList.toggle('open');
+        });
+
+        const openDrawerBtn = document.getElementById('openDrawerBtn');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+        const drawerOverlay = document.getElementById('drawerOverlay');
+
+        openDrawerBtn.addEventListener('click', () => {
+            drawerOverlay.classList.add('active');
+        });
+
+        closeDrawerBtn.addEventListener('click', () => {
+            drawerOverlay.classList.remove('active');
+        });
+
+        drawerOverlay.addEventListener('click', (e) => {
+            if (e.target === drawerOverlay) {
+                drawerOverlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
