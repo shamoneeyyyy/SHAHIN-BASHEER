@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Shahin Basheer - Construction Project Details">
+<title>Our Projects | Shahin Basheer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080808;
+  --white: #ffffff;
+  --muted: #a5a5a5;
+  --border: rgba(255,255,255,.13);
+  --glass: rgba(255,255,255,.045);
+  --accent: #c7e8d5;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--white);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size: 30px 30px;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.container { width: min(900px, 91%); margin: auto; }
+
+/* NAVIGATION */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8,8,8,.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+.nav-inner {
+  min-height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.brand {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { font-size: 12px; color: #ccc; }
+.nav-links a:hover { color: white; }
+.menu-btn {
+  display: none;
+  color: white;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 8px 12px;
+}
+
+/* PAGE HEADER */
+.page-header {
+  padding: 55px 0 35px;
+  text-align: center;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.page-header h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+.page-header h1 span { color: #b7c9be; }
+.page-header p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 12px;
+}
+.back-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 17px;
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.back-btn:hover { background: #191919; }
+
+/* PROJECTS: ONE BELOW ANOTHER */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px 0 65px;
+}
+.project-card {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+.project-image {
+  width: 100%;
+  display: block;
+  height: 300px;
+  object-fit: cover;
+  background: #171717;
+}
+.project-content { padding: 23px; }
+.project-number {
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.project-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 7px;
+}
+.project-title-row h2 {
+  font-size: clamp(21px, 4vw, 29px);
+  line-height: 1.3;
+}
+.status {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 5px 11px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.status.available {
+  color: #d4f8df;
+  border-color: rgba(150,230,175,.35);
+}
+.status.sold {
+  color: #ffb8b8;
+  border-color: rgba(255,120,120,.35);
+}
+.status.ongoing {
+  color: #ffe0a1;
+  border-color: rgba(255,200,100,.35);
+}
+.description {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+/* DETAILS GRID */
+.details-heading {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 23px 0 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+}
+.detail {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.2);
+  border-radius: 11px;
+}
+.detail-label {
+  color: var(--muted);
+  font-size: 10px;
+  display: block;
+  margin-bottom: 4px;
+}
+.detail-value {
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.feature {
+  padding: 6px 10px;
+  font-size: 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: #ddd;
+}
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.action-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 43px;
+  padding: 10px 16px;
+  background: #000;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.action-btn.primary {
+  background: var(--accent);
+  color: #080808;
+  border-color: var(--accent);
+}
+.action-btn:hover { opacity: .8; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 23px 0;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+footer p, footer a {
+  font-size: 10px;
+  color: #999;
+}
+
+@media(max-width: 600px) {
+  .container { width: 92%; }
+  .nav-inner { min-height: 62px; }
+  .brand { font-size: 12px; }
+  .menu-btn { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 62px;
+    left: 0;
+    right: 0;
+    padding: 20px 5%;
+    flex-direction: column;
+    gap: 16px;
+    background: #101010;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 14px; }
+  .page-header { padding: 40px 0 24px; }
+  .project-list { gap: 20px; padding-top: 10px; }
+  .project-image { height: 220px; }
+  .project-content { padding: 17px; }
+  .project-title-row { flex-direction: column; }
+  .details-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .detail { padding: 10px; }
+  .detail-value { font-size: 12px; }
+  .project-actions { flex-direction: column; }
+  .action-btn { width: 100%; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+@media(max-width: 350px) {
+  .details-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">SHAHIN <span>BASHEER</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false">☰ Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <header class="page-header">
+    <div class="eyebrow">Construction Portfolio</div>
+    <h1>Our <span>Projects.</span></h1>
+    <p>Explore project specifications, property details and availability.</p>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </header>
+
+  <div class="project-list">
+
+    <!-- PROJECT 01: EDIT DETAILS BELOW -->
+    <article class="project-card">
+      <img
+        class="project-image"
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+        alt="Project 01 modern house"
+        loading="lazy">
+
+      <div class="project-content">
+        <div class="project-number">PROJECT 01</div>
+
+        <div class="project-title-row">
+          <h2>Modern Family Villa</h2>
+          <span class="status available">AVAILABLE</span>
+        </div>
+
+        <p class="description">
+          A modern residential property designed with spacious interiors,
+          elegant architecture and comfortable family living.
+        </p>
+
+        <h3 class="details-heading">Property Specifications</h3>
+
+        <div class="details-grid">
+          <div class="detail">
+            <span class="detail-label">Built-up Area</span>
+            <span class="detail-value">2,200 sq.ft</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Land Area</span>
+            <span class="detail-value">5 cents</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bedrooms</span>
+            <span class="detail-value">4 BHK</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bathrooms</span>
+            <span class="detail-value">4</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Floors</span>
+            <span class="detail-value">2 floors</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Property Type</span>
+            <span class="detail-value">Villa</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Add location</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Construction Status</span>
+            <span class="detail-value">Completed</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Sale Status</span>
+            <span class="detail-value">Not Sold</span>
+          </div>
+        </div>
+
+        <div class="features">
+          <span class="feature">Car Parking</span>
+          <span class="feature">Modern Kitchen</span>
+          <span class="feature">Family Living</span>
+        </div>
+
+        <div class="project-actions">
+          <a class="action-btn primary"
+             href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2001"
+             target="_blank" rel="noopener noreferrer">
+            Enquire About This Project ↗
+          </a>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- PROJECT 02 -->
+    <article class="project-card">
+      <img
+        class="project-image"
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85"
+        alt="Project 02 commercial building"
+        loading="lazy">
+
+      <div class="project-content">
+        <div class="project-number">PROJECT 02</div>
+
+        <div class="project-title-row">
+          <h2>Commercial Building</h2>
+          <span class="status ongoing">UNDER CONSTRUCTION</span>
+        </div>
+
+        <p class="description">
+          A contemporary commercial development designed for practical
+          business use, accessibility and modern architectural appeal.
+        </p>
+
+        <h3 class="details-heading">Property Specifications</h3>
+
+        <div class="details-grid">
+          <div class="detail">
+            <span class="detail-label">Built-up Area</span>
+            <span class="detail-value">3,500 sq.ft</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Land Area</span>
+            <span class="detail-value">8 cents</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bedrooms</span>
+            <span class="detail-value">N/A</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bathrooms</span>
+            <span class="detail-value">4</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Floors</span>
+            <span class="detail-value">3 floors</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Property Type</span>
+            <span class="detail-value">Commercial</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Add location</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Construction Status</span>
+            <span class="detail-value">Ongoing</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Sale Status</span>
+            <span class="detail-value">Available</span>
+          </div>
+        </div>
+
+        <div class="features">
+          <span class="feature">Commercial Space</span>
+          <span class="feature">Modern Design</span>
+          <span class="feature">Multiple Floors</span>
+        </div>
+
+        <div class="project-actions">
+          <a class="action-btn primary"
+             href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2002"
+             target="_blank" rel="noopener noreferrer">
+            Enquire About This Project ↗
+          </a>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- PROJECT 03 -->
+    <article class="project-card">
+      <img
+        class="project-image"
+        src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85"
+        alt="Project 03 luxury villa"
+        loading="lazy">
+
+      <div class="project-content">
+        <div class="project-number">PROJECT 03</div>
+
+        <div class="project-title-row">
+          <h2>Luxury Residential Villa</h2>
+          <span class="status sold">SOLD OUT</span>
+        </div>
+
+        <p class="description">
+          A premium residential villa concept featuring sophisticated
+          interiors, elegant finishes and spacious living areas.
+        </p>
+
+        <h3 class="details-heading">Property Specifications</h3>
+
+        <div class="details-grid">
+          <div class="detail">
+            <span class="detail-label">Built-up Area</span>
+            <span class="detail-value">2,800 sq.ft</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Land Area</span>
+            <span class="detail-value">6 cents</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bedrooms</span>
+            <span class="detail-value">4 BHK</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bathrooms</span>
+            <span class="detail-value">5</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Floors</span>
+            <span class="detail-value">2 floors</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Property Type</span>
+            <span class="detail-value">Luxury Villa</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Add location</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Construction Status</span>
+            <span class="detail-value">Completed</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Sale Status</span>
+            <span class="detail-value">Sold Out</span>
+          </div>
+        </div>
+
+        <div class="features">
+          <span class="feature">Premium Interior</span>
+          <span class="feature">Car Parking</span>
+          <span class="feature">Luxury Finish</span>
+        </div>
+
+        <div class="project-actions">
+          <a class="action-btn"
+             href="https://wa.me/91XXXXXXXXXX?text=I%20would%20like%20to%20enquire%20about%20your%20other%20projects"
+             target="_blank" rel="noopener noreferrer">
+            Ask About Other Projects ↗
+          </a>
+        </div>
+      </div>
+    </article>
+    
+    <!-- PROJECT 04 -->
+    <article class="project-card">
+      <img
+        class="project-image"
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85"
+        alt="Project 02 commercial building"
+        loading="lazy">
+
+      <div class="project-content">
+        <div class="project-number">PROJECT 02</div>
+
+        <div class="project-title-row">
+          <h2>Commercial Building</h2>
+          <span class="status ongoing">UNDER CONSTRUCTION</span>
+        </div>
+
+        <p class="description">
+          A contemporary commercial development designed for practical
+          business use, accessibility and modern architectural appeal.
+        </p>
+
+        <h3 class="details-heading">Property Specifications</h3>
+
+        <div class="details-grid">
+          <div class="detail">
+            <span class="detail-label">Built-up Area</span>
+            <span class="detail-value">3,500 sq.ft</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Land Area</span>
+            <span class="detail-value">8 cents</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bedrooms</span>
+            <span class="detail-value">N/A</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Bathrooms</span>
+            <span class="detail-value">4</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Floors</span>
+            <span class="detail-value">3 floors</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Property Type</span>
+            <span class="detail-value">Commercial</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">Add location</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Construction Status</span>
+            <span class="detail-value">Ongoing</span>
+          </div>
+          <div class="detail">
+            <span class="detail-label">Sale Status</span>
+            <span class="detail-value">Available</span>
+          </div>
+        </div>
+
+        <div class="features">
+          <span class="feature">Commercial Space</span>
+          <span class="feature">Modern Design</span>
+          <span class="feature">Multiple Floors</span>
+        </div>
+
+        <div class="project-actions">
+          <a class="action-btn primary"
+             href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2002"
+             target="_blank" rel="noopener noreferrer">
+            Enquire About This Project ↗
+          </a>
+        </div>
+      </div>
+    </article>    
+
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Shahin Basheer. All rights reserved.</p>
+    <p>Construction · Architecture · Excellence</p>
+    <a href="index.html">Back to Home ↑</a>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(isOpen));
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
