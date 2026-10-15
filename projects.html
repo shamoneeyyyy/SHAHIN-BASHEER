@@ -32,11 +32,11 @@ body {
     linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
   background-size: 30px 30px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
-.container { width: min(900px, 91%); margin: auto; }
+.container { width: min(850px, 91%); margin: auto; }
 
 /* NAVIGATION */
 nav {
@@ -74,7 +74,7 @@ nav {
 
 /* PAGE HEADER */
 .page-header {
-  padding: 55px 0 35px;
+  padding: 45px 0 25px;
   text-align: center;
 }
 .eyebrow {
@@ -83,223 +83,283 @@ nav {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .page-header h1 {
-  font-size: clamp(32px, 6vw, 52px);
+  font-size: clamp(28px, 5vw, 44px);
   line-height: 1.2;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
 }
 .page-header h1 span { color: #b7c9be; }
 .page-header p {
   color: var(--muted);
-  font-size: 13px;
-  margin-top: 12px;
+  font-size: 12px;
+  margin-top: 10px;
 }
 .back-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 17px;
-  margin-top: 20px;
+  padding: 8px 14px;
+  margin-top: 15px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: 8px;
   background: #000;
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
 }
 .back-btn:hover { background: #191919; }
 
-/* PROJECTS: ONE BELOW ANOTHER */
+/* PROJECT LIST */
 .project-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding: 15px 0 65px;
+  gap: 20px;
+  padding: 10px 0 55px;
 }
+
+/* PROJECT CARD - SIDE BY SIDE LAYOUT */
 .project-card {
   width: 100%;
-  overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 16px;
   background: var(--glass);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* LEFT SIDE: IMAGE (Smaller Size) */
+.project-image-wrap {
+  width: 35%;
+  min-height: 180px;
+  background: #171717;
+  position: relative;
+  flex-shrink: 0;
 }
 .project-image {
   width: 100%;
-  display: block;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
-  background: #171717;
+  display: block;
 }
-.project-content { padding: 23px; }
+
+/* RIGHT SIDE: BASIC DETAILS */
+.project-info-side {
+  width: 65%;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .project-number {
-  font-size: 10px;
+  font-size: 9px;
   color: var(--accent);
   font-weight: 700;
   letter-spacing: 2px;
+  margin-bottom: 4px;
 }
 .project-title-row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 7px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 .project-title-row h2 {
-  font-size: clamp(21px, 4vw, 29px);
-  line-height: 1.3;
+  font-size: clamp(16px, 3vw, 20px);
+  line-height: 1.25;
+}
+.status-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
 }
 .status {
   display: inline-block;
   border: 1px solid var(--border);
-  border-radius: 30px;
-  padding: 5px 11px;
-  font-size: 10px;
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-size: 9px;
   font-weight: 700;
   white-space: nowrap;
 }
 .status.available {
   color: #d4f8df;
   border-color: rgba(150,230,175,.35);
+  background: rgba(150,230,175,.08);
 }
 .status.sold {
   color: #ffb8b8;
   border-color: rgba(255,120,120,.35);
+  background: rgba(255,120,120,.08);
 }
 .status.ongoing {
   color: #ffe0a1;
   border-color: rgba(255,200,100,.35);
-}
-.description {
-  font-size: 13px;
-  color: var(--muted);
-  margin-top: 14px;
+  background: rgba(255,200,100,.08);
 }
 
-/* DETAILS GRID */
-.details-heading {
-  font-size: 13px;
+/* QUICK STATS (Cent & Sq Feet) */
+.quick-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.stat-box {
+  background: rgba(0,0,0,.35);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.stat-box span {
+  color: var(--white);
   font-weight: 700;
-  margin: 23px 0 12px;
-  padding-bottom: 9px;
-  border-bottom: 1px solid var(--border);
+  margin-left: 3px;
+}
+
+/* FULL WIDTH BUTTON AT BOTTOM */
+.card-bottom-btn {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  border-top: 1px solid var(--border);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.card-bottom-btn:hover {
+  background: #141414;
+  color: #fff;
+}
+
+/* COLLAPSIBLE FULL DETAILS SECTION */
+.details-content {
+  display: none;
+  padding: 18px;
+  border-top: 1px solid var(--border);
+  background: rgba(0,0,0,.25);
+}
+.details-content.show {
+  display: block;
+}
+.description {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+.details-heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 15px 0 10px;
+  color: #ddd;
 }
 .details-grid {
   display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 8px;
 }
 .detail {
-  min-width: 0;
-  padding: 12px;
+  padding: 9px;
   border: 1px solid var(--border);
-  background: rgba(0,0,0,.2);
-  border-radius: 11px;
+  background: rgba(0,0,0,.3);
+  border-radius: 8px;
 }
 .detail-label {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 9px;
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .detail-value {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   overflow-wrap: anywhere;
 }
 .features {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 6px;
+  margin-top: 12px;
 }
 .feature {
-  padding: 6px 10px;
-  font-size: 10px;
+  padding: 5px 8px;
+  font-size: 9px;
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 6px;
   color: #ddd;
+  background: rgba(255,255,255,.02);
 }
 .project-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
+  margin-top: 15px;
 }
 .action-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 43px;
-  padding: 10px 16px;
-  background: #000;
-  border: 1px solid #444;
-  color: #fff;
-  border-radius: 9px;
-  font-size: 12px;
-  font-weight: 600;
-}
-.action-btn.primary {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 14px;
   background: var(--accent);
+  border: 1px solid var(--accent);
   color: #080808;
-  border-color: var(--accent);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
 }
-.action-btn:hover { opacity: .8; }
+.action-btn:hover { opacity: .85; }
 
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
-  padding: 23px 0;
+  padding: 20px 0;
 }
 .footer-inner {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 footer p, footer a {
   font-size: 10px;
   color: #999;
 }
 
+/* RESPONSIVE DESIGN FOR SMALL SCREENS */
 @media(max-width: 600px) {
-  .container { width: 92%; }
-  .nav-inner { min-height: 62px; }
-  .brand { font-size: 12px; }
-  .menu-btn { display: block; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 62px;
-    left: 0;
-    right: 0;
-    padding: 20px 5%;
-    flex-direction: column;
-    gap: 16px;
-    background: #101010;
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-links.open { display: flex; }
-  .nav-links a { font-size: 14px; }
-  .page-header { padding: 40px 0 24px; }
-  .project-list { gap: 20px; padding-top: 10px; }
-  .project-image { height: 220px; }
-  .project-content { padding: 17px; }
-  .project-title-row { flex-direction: column; }
-  .details-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .detail { padding: 10px; }
-  .detail-value { font-size: 12px; }
-  .project-actions { flex-direction: column; }
-  .action-btn { width: 100%; }
+  .container { width: 93%; }
+  .card-top-row { flex-direction: column; }
+  .project-image-wrap { width: 100%; height: 160px; }
+  .project-info-side { width: 100%; padding: 14px; }
+  .project-title-row { flex-direction: row; align-items: flex-start; }
+  .status-badges { flex-direction: row; align-items: center; }
+  .details-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .footer-inner { flex-direction: column; text-align: center; }
-}
-@media(max-width: 350px) {
-  .details-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -324,325 +384,254 @@ footer p, footer a {
   <header class="page-header">
     <div class="eyebrow">Construction Portfolio</div>
     <h1>Our <span>Projects.</span></h1>
-    <p>Explore project specifications, property details and availability.</p>
+    <p>Compact project listing with quick overview & expandable details.</p>
     <a href="index.html" class="back-btn">← Back to Home</a>
   </header>
 
   <div class="project-list">
 
-    <!-- PROJECT 01: EDIT DETAILS BELOW -->
     <article class="project-card">
-      <img
-        class="project-image"
-        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
-        alt="Project 01 modern house"
-        loading="lazy">
-
-      <div class="project-content">
-        <div class="project-number">PROJECT 01</div>
-
-        <div class="project-title-row">
-          <h2>Modern Family Villa</h2>
-          <span class="status available">AVAILABLE</span>
+      <div class="card-top-row">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80"
+            alt="Modern Family Villa"
+            loading="lazy">
         </div>
 
+        <div class="project-info-side">
+          <div class="project-number">PROJECT 01</div>
+          <div class="project-title-row">
+            <h2>Modern Family Villa</h2>
+            <div class="status-badges">
+              <span class="status available">FOR SALE</span>
+              <span class="status ongoing">COMPLETED</span>
+            </div>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat-box">Land: <span>5 Cents</span></div>
+            <div class="stat-box">Area: <span>2,200 Sq Ft</span></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="card-bottom-btn toggle-details-btn" type="button">
+        View Full Details ↓
+      </button>
+
+      <div class="details-content">
         <p class="description">
-          A modern residential property designed with spacious interiors,
-          elegant architecture and comfortable family living.
+          A modern residential property designed with spacious interiors, elegant architecture and comfortable family living.
         </p>
-
         <h3 class="details-heading">Property Specifications</h3>
-
         <div class="details-grid">
-          <div class="detail">
-            <span class="detail-label">Built-up Area</span>
-            <span class="detail-value">2,200 sq.ft</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Land Area</span>
-            <span class="detail-value">5 cents</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bedrooms</span>
-            <span class="detail-value">4 BHK</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bathrooms</span>
-            <span class="detail-value">4</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Floors</span>
-            <span class="detail-value">2 floors</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Property Type</span>
-            <span class="detail-value">Villa</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Location</span>
-            <span class="detail-value">Add location</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Construction Status</span>
-            <span class="detail-value">Completed</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Sale Status</span>
-            <span class="detail-value">Not Sold</span>
-          </div>
+          <div class="detail"><span class="detail-label">Built-up Area</span><span class="detail-value">2,200 sq.ft</span></div>
+          <div class="detail"><span class="detail-label">Land Area</span><span class="detail-value">5 cents</span></div>
+          <div class="detail"><span class="detail-label">Bedrooms</span><span class="detail-value">4 BHK</span></div>
+          <div class="detail"><span class="detail-label">Bathrooms</span><span class="detail-value">4</span></div>
+          <div class="detail"><span class="detail-label">Floors</span><span class="detail-value">2 floors</span></div>
+          <div class="detail"><span class="detail-label">Property Type</span><span class="detail-value">Villa</span></div>
+          <div class="detail"><span class="detail-label">Location</span><span class="detail-value">Add location</span></div>
+          <div class="detail"><span class="detail-label">Construction</span><span class="detail-value">Completed</span></div>
+          <div class="detail"><span class="detail-label">Sale Status</span><span class="detail-value">For Sale</span></div>
         </div>
-
         <div class="features">
           <span class="feature">Car Parking</span>
           <span class="feature">Modern Kitchen</span>
           <span class="feature">Family Living</span>
         </div>
-
         <div class="project-actions">
-          <a class="action-btn primary"
-             href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2001"
-             target="_blank" rel="noopener noreferrer">
-            Enquire About This Project ↗
+          <a class="action-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2001" target="_blank" rel="noopener noreferrer">
+            Enquire via WhatsApp ↗
           </a>
         </div>
       </div>
     </article>
 
 
-    <!-- PROJECT 02 -->
     <article class="project-card">
-      <img
-        class="project-image"
-        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85"
-        alt="Project 02 commercial building"
-        loading="lazy">
-
-      <div class="project-content">
-        <div class="project-number">PROJECT 02</div>
-
-        <div class="project-title-row">
-          <h2>Commercial Building</h2>
-          <span class="status ongoing">UNDER CONSTRUCTION</span>
+      <div class="card-top-row">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
+            alt="Commercial Building"
+            loading="lazy">
         </div>
 
+        <div class="project-info-side">
+          <div class="project-number">PROJECT 02</div>
+          <div class="project-title-row">
+            <h2>Commercial Building</h2>
+            <div class="status-badges">
+              <span class="status available">FOR SALE</span>
+              <span class="status ongoing">ONGOING</span>
+            </div>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat-box">Land: <span>8 Cents</span></div>
+            <div class="stat-box">Area: <span>3,500 Sq Ft</span></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="card-bottom-btn toggle-details-btn" type="button">
+        View Full Details ↓
+      </button>
+
+      <div class="details-content">
         <p class="description">
-          A contemporary commercial development designed for practical
-          business use, accessibility and modern architectural appeal.
+          A contemporary commercial development designed for practical business use, accessibility and modern architectural appeal.
         </p>
-
         <h3 class="details-heading">Property Specifications</h3>
-
         <div class="details-grid">
-          <div class="detail">
-            <span class="detail-label">Built-up Area</span>
-            <span class="detail-value">3,500 sq.ft</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Land Area</span>
-            <span class="detail-value">8 cents</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bedrooms</span>
-            <span class="detail-value">N/A</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bathrooms</span>
-            <span class="detail-value">4</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Floors</span>
-            <span class="detail-value">3 floors</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Property Type</span>
-            <span class="detail-value">Commercial</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Location</span>
-            <span class="detail-value">Add location</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Construction Status</span>
-            <span class="detail-value">Ongoing</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Sale Status</span>
-            <span class="detail-value">Available</span>
-          </div>
+          <div class="detail"><span class="detail-label">Built-up Area</span><span class="detail-value">3,500 sq.ft</span></div>
+          <div class="detail"><span class="detail-label">Land Area</span><span class="detail-value">8 cents</span></div>
+          <div class="detail"><span class="detail-label">Bedrooms</span><span class="detail-value">N/A</span></div>
+          <div class="detail"><span class="detail-label">Bathrooms</span><span class="detail-value">4</span></div>
+          <div class="detail"><span class="detail-label">Floors</span><span class="detail-value">3 floors</span></div>
+          <div class="detail"><span class="detail-label">Property Type</span><span class="detail-value">Commercial</span></div>
+          <div class="detail"><span class="detail-label">Location</span><span class="detail-value">Add location</span></div>
+          <div class="detail"><span class="detail-label">Construction</span><span class="detail-value">Ongoing</span></div>
+          <div class="detail"><span class="detail-label">Sale Status</span><span class="detail-value">For Sale</span></div>
         </div>
-
         <div class="features">
           <span class="feature">Commercial Space</span>
           <span class="feature">Modern Design</span>
           <span class="feature">Multiple Floors</span>
         </div>
-
         <div class="project-actions">
-          <a class="action-btn primary"
-             href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2002"
-             target="_blank" rel="noopener noreferrer">
-            Enquire About This Project ↗
+          <a class="action-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2002" target="_blank" rel="noopener noreferrer">
+            Enquire via WhatsApp ↗
           </a>
         </div>
       </div>
     </article>
 
 
-    <!-- PROJECT 03 -->
     <article class="project-card">
-      <img
-        class="project-image"
-        src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85"
-        alt="Project 03 luxury villa"
-        loading="lazy">
-
-      <div class="project-content">
-        <div class="project-number">PROJECT 03</div>
-
-        <div class="project-title-row">
-          <h2>Luxury Residential Villa</h2>
-          <span class="status sold">SOLD OUT</span>
+      <div class="card-top-row">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=600&q=80"
+            alt="Luxury Residential Villa"
+            loading="lazy">
         </div>
 
+        <div class="project-info-side">
+          <div class="project-number">PROJECT 03</div>
+          <div class="project-title-row">
+            <h2>Luxury Residential Villa</h2>
+            <div class="status-badges">
+              <span class="status sold">SOLD OUT</span>
+              <span class="status ongoing">COMPLETED</span>
+            </div>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat-box">Land: <span>6 Cents</span></div>
+            <div class="stat-box">Area: <span>2,800 Sq Ft</span></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="card-bottom-btn toggle-details-btn" type="button">
+        View Full Details ↓
+      </button>
+
+      <div class="details-content">
         <p class="description">
-          A premium residential villa concept featuring sophisticated
-          interiors, elegant finishes and spacious living areas.
+          A premium residential villa concept featuring sophisticated interiors, elegant finishes and spacious living areas.
         </p>
-
         <h3 class="details-heading">Property Specifications</h3>
-
         <div class="details-grid">
-          <div class="detail">
-            <span class="detail-label">Built-up Area</span>
-            <span class="detail-value">2,800 sq.ft</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Land Area</span>
-            <span class="detail-value">6 cents</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bedrooms</span>
-            <span class="detail-value">4 BHK</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bathrooms</span>
-            <span class="detail-value">5</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Floors</span>
-            <span class="detail-value">2 floors</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Property Type</span>
-            <span class="detail-value">Luxury Villa</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Location</span>
-            <span class="detail-value">Add location</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Construction Status</span>
-            <span class="detail-value">Completed</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Sale Status</span>
-            <span class="detail-value">Sold Out</span>
-          </div>
+          <div class="detail"><span class="detail-label">Built-up Area</span><span class="detail-value">2,800 sq.ft</span></div>
+          <div class="detail"><span class="detail-label">Land Area</span><span class="detail-value">6 cents</span></div>
+          <div class="detail"><span class="detail-label">Bedrooms</span><span class="detail-value">4 BHK</span></div>
+          <div class="detail"><span class="detail-label">Bathrooms</span><span class="detail-value">5</span></div>
+          <div class="detail"><span class="detail-label">Floors</span><span class="detail-value">2 floors</span></div>
+          <div class="detail"><span class="detail-label">Property Type</span><span class="detail-value">Luxury Villa</span></div>
+          <div class="detail"><span class="detail-label">Location</span><span class="detail-value">Add location</span></div>
+          <div class="detail"><span class="detail-label">Construction</span><span class="detail-value">Completed</span></div>
+          <div class="detail"><span class="detail-label">Sale Status</span><span class="detail-value">Sold Out</span></div>
         </div>
-
         <div class="features">
           <span class="feature">Premium Interior</span>
           <span class="feature">Car Parking</span>
           <span class="feature">Luxury Finish</span>
         </div>
-
         <div class="project-actions">
-          <a class="action-btn"
-             href="https://wa.me/91XXXXXXXXXX?text=I%20would%20like%20to%20enquire%20about%20your%20other%20projects"
-             target="_blank" rel="noopener noreferrer">
+          <a class="action-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20would%20like%20to%20enquire%20about%20other%20projects" target="_blank" rel="noopener noreferrer">
             Ask About Other Projects ↗
           </a>
         </div>
       </div>
     </article>
-    
-    <!-- PROJECT 04 -->
+
+
     <article class="project-card">
-      <img
-        class="project-image"
-        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85"
-        alt="Project 02 commercial building"
-        loading="lazy">
-
-      <div class="project-content">
-        <div class="project-number">PROJECT 02</div>
-
-        <div class="project-title-row">
-          <h2>Commercial Building</h2>
-          <span class="status ongoing">UNDER CONSTRUCTION</span>
+      <div class="card-top-row">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+            alt="Modern Duplex Home"
+            loading="lazy">
         </div>
 
+        <div class="project-info-side">
+          <div class="project-number">PROJECT 04</div>
+          <div class="project-title-row">
+            <h2>Modern Duplex Home</h2>
+            <div class="status-badges">
+              <span class="status available">FOR SALE</span>
+              <span class="status ongoing">ONGOING</span>
+            </div>
+          </div>
+
+          <div class="quick-stats">
+            <div class="stat-box">Land: <span>4.5 Cents</span></div>
+            <div class="stat-box">Area: <span>1,950 Sq Ft</span></div>
+          </div>
+        </div>
+      </div>
+
+      <button class="card-bottom-btn toggle-details-btn" type="button">
+        View Full Details ↓
+      </button>
+
+      <div class="details-content">
         <p class="description">
-          A contemporary commercial development designed for practical
-          business use, accessibility and modern architectural appeal.
+          An elegant duplex home featuring high ceilings, contemporary styling, and a prime neighborhood location.
         </p>
-
         <h3 class="details-heading">Property Specifications</h3>
-
         <div class="details-grid">
-          <div class="detail">
-            <span class="detail-label">Built-up Area</span>
-            <span class="detail-value">3,500 sq.ft</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Land Area</span>
-            <span class="detail-value">8 cents</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bedrooms</span>
-            <span class="detail-value">N/A</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Bathrooms</span>
-            <span class="detail-value">4</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Floors</span>
-            <span class="detail-value">3 floors</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Property Type</span>
-            <span class="detail-value">Commercial</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Location</span>
-            <span class="detail-value">Add location</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Construction Status</span>
-            <span class="detail-value">Ongoing</span>
-          </div>
-          <div class="detail">
-            <span class="detail-label">Sale Status</span>
-            <span class="detail-value">Available</span>
-          </div>
+          <div class="detail"><span class="detail-label">Built-up Area</span><span class="detail-value">1,950 sq.ft</span></div>
+          <div class="detail"><span class="detail-label">Land Area</span><span class="detail-value">4.5 cents</span></div>
+          <div class="detail"><span class="detail-label">Bedrooms</span><span class="detail-value">3 BHK</span></div>
+          <div class="detail"><span class="detail-label">Bathrooms</span><span class="detail-value">3</span></div>
+          <div class="detail"><span class="detail-label">Floors</span><span class="detail-value">2 floors</span></div>
+          <div class="detail"><span class="detail-label">Property Type</span><span class="detail-value">Duplex Villa</span></div>
+          <div class="detail"><span class="detail-label">Location</span><span class="detail-value">Add location</span></div>
+          <div class="detail"><span class="detail-label">Construction</span><span class="detail-value">Ongoing</span></div>
+          <div class="detail"><span class="detail-label">Sale Status</span><span class="detail-value">For Sale</span></div>
         </div>
-
         <div class="features">
-          <span class="feature">Commercial Space</span>
-          <span class="feature">Modern Design</span>
-          <span class="feature">Multiple Floors</span>
+          <span class="feature">Balcony</span>
+          <span class="feature">Open Terrace</span>
+          <span class="feature">Covered Car Porch</span>
         </div>
-
         <div class="project-actions">
-          <a class="action-btn primary"
-             href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2002"
-             target="_blank" rel="noopener noreferrer">
-            Enquire About This Project ↗
+          <a class="action-btn" href="https://wa.me/91XXXXXXXXXX?text=I%20am%20interested%20in%20Project%2004" target="_blank" rel="noopener noreferrer">
+            Enquire via WhatsApp ↗
           </a>
         </div>
       </div>
-    </article>    
+    </article>
 
   </div>
 </main>
@@ -668,6 +657,21 @@ navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('open');
     menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Toggle details button functionality
+document.querySelectorAll('.toggle-details-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.project-card');
+    const details = card.querySelector('.details-content');
+    const isVisible = details.classList.toggle('show');
+    
+    if (isVisible) {
+      btn.textContent = 'Hide Full Details ↑';
+    } else {
+      btn.textContent = 'View Full Details ↓';
+    }
   });
 });
 
