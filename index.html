@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,6 @@
 <meta name="theme-color" content="#080808">
 <meta name="description" content="Shahin Basheer - Construction and Architecture Portfolio">
 <title>Shahin Basheer | Portfolio</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -100,34 +100,61 @@ h1 span{color:#b7c9be}
 section{padding:55px 0}
 .section-title{font-size:clamp(28px,4vw,40px);line-height:1.25}
 .section-subtitle{color:var(--muted);font-size:13px;margin-top:8px}
+
+/* YouTube thumbnail ratio images */
+.visual-banners{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:25px;
+}
+.visual-banner{
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:#111;
+}
+.visual-banner img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  transition:transform .35s;
+}
+.visual-banner:hover img{transform:scale(1.025)}
+.contact-banner{
+  margin:0 0 25px;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:#111;
+}
+.contact-banner img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+}
 .quote{padding:30px}
 .quote-mark{font-size:42px;color:var(--accent);line-height:1}
-blockquote{font-size:clamp(19px,3vw,26px);line-height:1.55;margin:10px 0 15px}
-.quote small{color:var(--muted)}
-.projects-box{
-  padding:35px 22px;text-align:center;
+blockquote{
+  font-size:clamp(19px,3vw,26px);
+  line-height:1.55;margin:10px 0 15px;
 }
+.quote small{color:var(--muted)}
+.projects-box{padding:35px 22px;text-align:center}
 .projects-box p{font-size:13px;color:var(--muted);margin:10px 0 23px}
 .projects-btn{
   width:min(300px,100%);
   min-height:52px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:0 auto;
-  padding:14px 22px;
-  background:#000;
-  color:#fff;
-  border:1px solid #444;
-  border-radius:10px;
-  font-weight:700;
-  font-size:13px;
-  text-align:center;
-  transition:.25s;
+  display:flex;justify-content:center;align-items:center;
+  margin:0 auto;padding:14px 22px;
+  background:#000;color:#fff;border:1px solid #444;
+  border-radius:10px;font-weight:700;font-size:13px;
+  text-align:center;transition:.25s;
 }
 .projects-btn:hover{
-  background:#171717;
-  border-color:#aaa;
+  background:#171717;border-color:#aaa;
   transform:translateY(-2px);
 }
 .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px}
@@ -157,7 +184,9 @@ footer{border-top:1px solid var(--border);padding:25px 0;margin-top:30px}
   flex-wrap:wrap;gap:12px;
 }
 footer p,footer a{color:#999;font-size:11px}
+
 @media(max-width:760px){
+  .visual-banners{grid-template-columns:1fr;gap:14px}
   .container{width:91%}
   .nav-inner{min-height:65px}
   .brand{font-size:12px}
@@ -184,7 +213,6 @@ footer p,footer a{color:#999;font-size:11px}
 </head>
 
 <body>
-
 <nav>
   <div class="container nav-inner">
     <a class="brand" href="index.html">SHAHIN <span>BASHEER</span></a>
@@ -199,7 +227,6 @@ footer p,footer a{color:#999;font-size:11px}
 </nav>
 
 <main class="container">
-
   <section class="hero" id="home">
     <div>
       <div class="eyebrow">WELCOME TO MY OFFICIAL PORTFOLIO WEBSITE</div>
@@ -215,10 +242,11 @@ footer p,footer a{color:#999;font-size:11px}
     </div>
 
     <div class="profile glass">
-      <!-- Replace with your own profile image URL -->
-      <img src="profile.jpg" alt="Shahin Basheer profile photo"
-      <div class="profile-caption">
-      </div>
+      <img
+        src="profile.jpg" alt="Shahin Basheer profile photo">
+        alt="Shahin Basheer profile photo"
+        onerror="this.onerror=null;this.src='https://placehold.co/700x900/171717/ffffff?text=Profile+Photo'">
+      <div class="profile-caption"></div>
     </div>
   </section>
 
@@ -236,23 +264,36 @@ footer p,footer a{color:#999;font-size:11px}
     </div>
   </section>
 
+  <!-- image above Selected Work -->
   <section id="projects">
-    <div class="eyebrow">Selected Work</div>
+    <div class="visual-banners" aria-label="Featured construction images">
+      <div class="visual-banner">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1280&q=85"
+          alt="Modern residential architecture" loading="lazy">
+      </div>
+
+    <div class="eyebrow" style="margin-top:28px">Selected Work</div>
     <h2 class="section-title">Projects & Portfolio</h2>
     <p class="section-subtitle">Discover my construction and architectural work.</p>
 
     <div class="projects-box glass" style="margin-top:25px">
       <h3>Explore All Projects</h3>
       <p>View the complete project collection, images and descriptions on a separate page.</p>
-
-      <!-- Black button, white centered text -->
       <a href="projects.html" class="projects-btn">
         VIEW MY PROJECTS &nbsp; ↗
       </a>
     </div>
   </section>
 
+  <!-- Image above Let's Connect -->
   <section id="contact">
+    <div class="contact-banner">
+      <img
+        <img src="img1.png" alt="Shahin Basheer profile photo">
+        alt="Modern city architecture" loading="lazy">
+    </div>
+
     <div class="eyebrow">Let's Connect</div>
     <h2 class="section-title">Have a project in mind?</h2>
     <p class="section-subtitle">Get in touch to discuss your next project.</p>
@@ -263,18 +304,15 @@ footer p,footer a{color:#999;font-size:11px}
         <p class="section-subtitle">Connect with me through your preferred platform.</p>
 
         <div class="contact-list">
-          <!-- Replace with your real email -->
           <a class="contact-link" href="mailto:shamoneeyyyy@gmail.com">
             <span>✉ Email</span><span>↗</span>
           </a>
 
-          <!-- Replace with your Instagram username -->
           <a class="contact-link" href="https://instagram.com/_shamoneeyyyy_"
              target="_blank" rel="noopener noreferrer">
             <span>◎ Instagram</span><span>↗</span>
           </a>
 
-          <!-- Replace with your WhatsApp number including country code -->
           <a class="contact-link" href="https://wa.me/919037737731"
              target="_blank" rel="noopener noreferrer">
             <span>◉ WhatsApp</span><span>↗</span>
@@ -311,7 +349,6 @@ footer p,footer a{color:#999;font-size:11px}
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -362,6 +399,5 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
 });
 </script>
-
 </body>
 </html>
